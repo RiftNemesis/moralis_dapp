@@ -61,6 +61,17 @@ const results = await query.find();
         
         // get stats on page load
         getStats();
+
+       async function login() {
+           let user = Moralis.User.current();
+           if (!user) {
+               user = await Moralis.Web3.authenticate();
+            }
+            console.log("logged in user:", user);
+            
+            // ** add this **
+            getStats();
+          }
     
 
     </script>
